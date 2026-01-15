@@ -4,7 +4,28 @@ def menu():
     cette fonction gère et relie toutes les autres fonction, elle retourne une fonction selon le choix de l'utilisateur
     :return:
     '''
+    while True:
+        print("\n--- MENU TÂCHES ---")
+        print("1. Ajouter une tâche")
+        print("2. Afficher toutes les tâches")
+        print("3. Marquer une tâche comme faite")
+        print("4. Quitter")
 
+        choix = input("Votre choix : ")
+
+        if choix == "1":
+
+        if choix == "2":
+
+        if choix == "3":
+
+        if choix == "4":
+
+        if choix == "5":
+
+        if choix == "6":
+
+        if choix == "7":
 
 def generer_mdp():
     '''
