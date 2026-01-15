@@ -16,22 +16,22 @@ def generer_mdp():
     mdp = ""
     longueur = random.randint(8,64)
     for i in range (0, longueur):
-        j = random.randint(1,3)
-        if j == 1:
-            l = random.choice(voyelle)
-            l = chr(l)
-            j = random.randint(1, 6000)
-            if j % 2 == 0:
-                l = l.upper()
-            mdp += l
-        if j == 2:
-            l = random.choice(consonne)
-            l = chr(l)
-            j = random.randint(1, 6000)
-            if j % 2 == 0:
-                l = l.upper()
-            mdp += l
-        if j == 3:
+        type = random.randint(1,3)
+        if type == 1:
+            caractere = random.choice(voyelle)
+            caractere = chr(caractere)
+            choix_maj = random.randint(1, 6000)
+            if choix_maj % 2 == 0:
+                caractere = caractere.upper()
+            mdp += caractere
+        if type == 2:
+            caractere = random.choice(consonne)
+            caractere = chr(caractere)
+            choix_maj = random.randint(1, 6000)
+            if choix_maj % 2 == 0:
+                caractere = caractere.upper()
+            mdp += caractere
+        if type == 3:
             mdp += str(random.randint(0,9))
     return mdp
 
