@@ -87,6 +87,7 @@ def quitter():
     cette fonction va arrêter le programme
     :return:
     '''
+    return break
 
 menu()
 print(generer_mdp())
