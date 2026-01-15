@@ -4,32 +4,40 @@ def menu():
     cette fonction gère et relie toutes les autres fonction, elle retourne une fonction selon le choix de l'utilisateur
     :return:
     '''
+    d = {}
     while True:
-        print("\n--- MENU TÂCHES ---")
-        print("1. Générer")
-        print("2. Analyser")
-        print("3. Ajouter compte")
-        print("4. Lister comptes")
-        print("5. Rechercher")
-        print("6. Statistiques")
-        print("7. Quitter")
+        print("\n--- MENU TÂCHES ---\n"
+              "1. Générer\n"
+              "2. Analyser\n"
+              "3. Ajouter compte\n"
+              "4. Lister comptes\n"
+              "5. Rechercher\n"
+              "6. Statistiques\n"
+              "7. Quitter")
+        while True:
+            try:
+                choix = int(input("Votre choix : "))
+                break
+            except ValueError:
+                print("Veuillez entrer un nombre valide.")
+        match choix:
+            case 1 :
+                mdp = generer_mdp()
+                print(mdp)
+            case 2:
+                score = analyser_force(mdp)
+                print(score)
+            case 3:
+                ajouter_compte(mdp,score,d)
+            case 4:
+                lister_compte(d)
+            case 5:
+                rechercher_compte()
+            case 6:
+                statistiques_compte()
+            case 7:
+                break
 
-        choix = input("Votre choix : ")
-
-        if choix == "1":
-            return generer_mdp()
-        elif choix == "2":
-            return analyser_force()
-        elif choix == "3":
-            return ajouter_compte()
-        elif choix == "4":
-            return lister_compte()
-        elif choix == "5":
-            return rechercher()
-        elif choix == "6":
-            return statistiques()
-        elif choix == "7":
-             break
 
 
 def generer_mdp():
