@@ -18,17 +18,17 @@ def menu():
 
         if choix == "1":
             return generer_mdp()
-        if choix == "2":
+        elif choix == "2":
             return analyser_force()
-        if choix == "3":
+        elif choix == "3":
             return ajouter_compte()
-        if choix == "4":
+        elif choix == "4":
             return lister_compte()
-        if choix == "5":
+        elif choix == "5":
             return rechercher()
-        if choix == "6":
+        elif choix == "6":
             return statistiques()
-        if choix == "7":
+        elif choix == "7":
             return quitter()
 
 
@@ -61,7 +61,7 @@ def generer_mdp():
             mdp += str(random.randint(0,9))
     return mdp
 
-                 
+
 
 
 
@@ -105,7 +105,6 @@ def statistiques():
     cette fonction va afficher le score moyen de tous les mots de passe de l'utilisateur
     :return:
     '''
-
 
 
 
