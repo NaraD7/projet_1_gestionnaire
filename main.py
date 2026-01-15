@@ -29,7 +29,7 @@ def menu():
         elif choix == "6":
             return statistiques()
         elif choix == "7":
-            return break
+             break
 
 
 def generer_mdp():
