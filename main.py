@@ -60,7 +60,17 @@ def analyser_force() :
     cette fonction va analyser le mot de passe générer et va retourner un score de sécurité entre 0 et 100
     :return:
     '''
-
+    score = 0
+    longueur =len(mdp)
+    if longueur >= 12:
+        score += 25
+    elif 12<longueur<15:
+        score += 50
+    elif 15<longueur<18:
+        score += 75
+    else:
+        score += 100
+    return score
 
 
 def ajouter_compte():
