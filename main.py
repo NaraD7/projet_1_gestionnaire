@@ -79,7 +79,13 @@ def ajouter_compte():
     le mot de passe avec le site qui correspond dans le fichier externe
     :return:
     '''
-
+    nom_site = str(input("Entrez le nom du site : "))
+    type_site = str(input("entrez le type du site (email, réseaux, banque, ..."))
+    d[nom_site] = {
+        "type": type_site,
+        "mot de passe": mdp
+    }
+    print(d)
 
 
 
