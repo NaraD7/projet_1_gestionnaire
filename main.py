@@ -79,11 +79,17 @@ def ajouter_compte():
 
 
 
-def lister_compte():
+def lister_compte(d):
     '''
     cette fonction va afficher les comptes présent dans le fichier externe
     :return:
     '''
+    print("--------------------------------------------")
+    for cle, valeur in d.items():
+        print(cle)
+        for cle2 in valeur:
+            print (cle2,":",valeur[cle2])
+    print("--------------------------------------------")
 
 
 
