@@ -29,7 +29,7 @@ def menu():
         elif choix == "6":
             return statistiques()
         elif choix == "7":
-            return quitter()
+            return break
 
 
 def generer_mdp():
@@ -99,11 +99,4 @@ def statistiques():
     :return:
     '''
 
-
-
-def quitter():
-    '''
-    cette fonction va arrêter le programme
-    :return:
-    '''
 
