@@ -37,28 +37,18 @@ def generer_mdp():
     cette fonction a générer un mot de passe et va retourner le mot de passe créer
     :return:
     '''
-    voyelle = [97, 101, 105, 111, 117, 121]
-    consonne = [98, 99, 100, 102, 103, 104, 106, 107, 108, 109, 110, 112, 113, 114, 115, 116, 118, 119, 120, 122]
+    voyelle = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'u', 'U', 'y', 'Y']
+    consonne = ['b', 'B', 'c', 'C', 'd', 'D', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'v', 'V', 'w', 'W', 'x', 'X', 'z', 'Z']
+    speciaux = ['!', '@', '#', '$', '%', '&', '*', '?', '2', '3', '4', '5', '6', '7', '8', '9']
+
     mdp = ""
-    longueur = random.randint(8,64)
+    longueur = random.randint(3,6)
     for i in range (0, longueur):
-        type = random.randint(1,3)
-        if type == 1:
-            caractere = random.choice(voyelle)
-            caractere = chr(caractere)
-            choix_maj = random.randint(1, 6000)
-            if choix_maj % 2 == 0:
-                caractere = caractere.upper()
-            mdp += caractere
-        if type == 2:
             caractere = random.choice(consonne)
-            caractere = chr(caractere)
-            choix_maj = random.randint(1, 6000)
-            if choix_maj % 2 == 0:
-                caractere = caractere.upper()
             mdp += caractere
-        if type == 3:
-            mdp += str(random.randint(0,9))
+            caractere = random.choice(voyelle)
+            mdp += caractere
+            mdp += random.choice(speciaux)
     return mdp
 
 
