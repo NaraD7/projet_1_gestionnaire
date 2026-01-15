@@ -93,15 +93,6 @@ def lister_compte(d):
 
 
 
-
-def rechercher():
-    '''
-        cette fonction va afficher les comptes présent dans le fichier externe
-        :return:
-        '''
-
-
-
 def statistiques():
     '''
     cette fonction va afficher le score moyen de tous les mots de passe de l'utilisateur
