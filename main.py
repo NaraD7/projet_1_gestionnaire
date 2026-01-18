@@ -50,8 +50,8 @@ def generer_mdp():
     speciaux = ['!', '@', '#', '$', '%', '&', '*', '?', '2', '3', '4', '5', '6', '7', '8', '9']
 
     mdp = ""
-    longueur = random.randint(3,6)
-    for i in range (0, longueur):
+    longueur_mdp = random.randint(3,6)
+    for i in range (0, longueur_mdp):               # cette boucle va choisir une consonne, une voyelle et un caractère spécial afin de construire le mot de passe 
             caractere = random.choice(consonne)
             mdp += caractere
             caractere = random.choice(voyelle)
@@ -87,15 +87,20 @@ def ajouter_compte(mdp, dictionnaire_sauvegarde):
     le mot de passe avec le site qui correspond dans le fichier externe
     :return:
     '''
-    nom_site = str(input("Entrez le nom du site : "))
-    type_site = str(input("entrez le type du site (email, réseaux, banque, ..."))
-    dictionnaire_sauvegarde[nom_site] = {
+    nom_site, type_site = "", ""        # initialisation de nom_site et type_site 
+    while len(nom_site) == 0:           # tant que nom_site est vide on demande à l'utilisateur d'entrer le nom du site 
+        nom_site = str(input("Entrez le nom du site : "))
+    while len(nom_site) == 0:           # tant que nom_site est vide on demande à l'utilisateur d'entrer le type du site
+        type_site = str(input("entrez le type du site (email, réseaux, banque, ..."))
+    dictionnaire_sauvegarde[nom_site] = {       # mise à jour du dictionnaire de sauvegarde avec les infos entrées 
         "type": type_site,
         "mot de passe": mdp
     }
-    print(dictionnaire_sauvegarde)
+    print(dictionnaire_sauvegarde)       # print de debogage 
 
-
+def sauvegarder(dictionnaire_sauvegarde):
+    with open("sauvegarder_compte.json","w", encoding="utf-8") as compte_ecriture:      # cette ligne ouvre le fichier de sauvegarde json ("w") et y sauvegarde les sites sauvegardés par l'utilisateur 
+        json.dump(dictionnaire_sauvegarde, compte_ecriture, indent = 2)
 
 def lister_compte(dictionnaire_sauvegarde):
     '''
