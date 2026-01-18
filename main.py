@@ -63,7 +63,7 @@ def generer_mdp():
 
 
 
-def analyser_force() :
+def analyser_force(mdp) :
     '''
     cette fonction va analyser le mot de passe générer et va retourner un score de sécurité entre 0 et 100
     :return:
@@ -81,7 +81,7 @@ def analyser_force() :
     return score
 
 
-def ajouter_compte():
+def ajouter_compte(mdp, dictionnaire_sauvegarde):
     '''
     cette fonction va demander à l'utilisateur d'entrer un nom et une catégorie afin de sauvegarder
     le mot de passe avec le site qui correspond dans le fichier externe
@@ -89,15 +89,15 @@ def ajouter_compte():
     '''
     nom_site = str(input("Entrez le nom du site : "))
     type_site = str(input("entrez le type du site (email, réseaux, banque, ..."))
-    d[nom_site] = {
+    dictionnaire_sauvegarde[nom_site] = {
         "type": type_site,
         "mot de passe": mdp
     }
-    print(d)
+    print(dictionnaire_sauvegarde)
 
 
 
-def lister_compte(d):
+def lister_compte(dictionnaire_sauvegarde):
     '''
     cette fonction va afficher les comptes présent dans le fichier externe
     :return:
