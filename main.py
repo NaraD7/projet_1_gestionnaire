@@ -2,6 +2,7 @@ import random
 def menu():
     '''
     cette fonction gère et relie toutes les autres fonction, elle retourne une fonction selon le choix de l'utilisateur
+    :paramètres : None
     :return:
     '''
     d = {}
@@ -43,6 +44,7 @@ def menu():
 def generer_mdp():
     '''
     cette fonction a générer un mot de passe et va retourner le mot de passe créer
+    :paramètres : None
     :return:
     '''
     voyelle = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'u', 'U', 'y', 'Y']
@@ -66,6 +68,7 @@ def generer_mdp():
 def analyser_force(mdp) :
     '''
     cette fonction va analyser le mot de passe générer et va retourner un score de sécurité entre 0 et 100
+    paramètres : mot de passe
     :return:
     '''
     score = 0
@@ -85,6 +88,7 @@ def ajouter_compte(mdp, dictionnaire_sauvegarde):
     '''
     cette fonction va demander à l'utilisateur d'entrer un nom et une catégorie afin de sauvegarder
     le mot de passe avec le site qui correspond dans le fichier externe
+    paramètres : mot de passe généré, score , dictionnaire "d" pour sauvegarder les infos
     :return:
     '''
     nom_site, type_site = "", ""        # initialisation de nom_site et type_site 
