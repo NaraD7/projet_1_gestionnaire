@@ -5,26 +5,94 @@ Pour les tests à effectuer il y a :
 - voir si le mot de passe généré respecte les caractéristique demandées
 
 
-## Test 1 : Entrée de lettre dans l'input du menu 
-### Résultat : 
-<img width="301" height="647" alt="image" src="https://github.com/user-attachments/assets/0cfec675-0b20-4d6a-9010-4c9a1b8607c2" />
+## Test  : Menu()
+#### Résultat obtenu :
+C:\Users\Lilian\PycharmProjects\PythonProject2\.venv\Scripts\python.exe "C:\Users\Lilian\Downloads\projet_1_gestionnaire-main (1)\projet_1_gestionnaire-main\main.py" 
 
-❌ Echec : erreur due à l'implémentation de la comparaison 
+--- MENU TÂCHES ---
+1. Générer
+2. Analyser
+3. Ajouter compte
+4. Lister comptes
+5. Rechercher
+6. Statistiques
+7. Quitter
+   
+Votre choix :
 
-<img width="393" height="205" alt="image" src="https://github.com/user-attachments/assets/733e3131-b181-41be-af00-ba240aaeea40" />
+## Test : generer_mdp()
+#### Résultat obtenu :
 
-#### Correction
+C:\Users\Lilian\PycharmProjects\PythonProject2\.venv\Scripts\python.exe "C:\Users\Lilian\Downloads\projet_1_gestionnaire-main (1)\projet_1_gestionnaire-main\main.py" 
 
-<img width="1480" height="1160" alt="image" src="https://github.com/user-attachments/assets/6806c651-f44a-4e5d-a1c6-9ee711e51853" />
+pY6ZE2kU3
 
-<img width="445" height="393" alt="image" src="https://github.com/user-attachments/assets/fcbfd4ff-11a3-44c9-bc81-6c89fe7ef419" />
+voulez vous changer le mot de passe ? 1 : Oui,  2 : Non   : 1
 
-La gestion des erreurs fonctionne.
+entrez le nouveau mot de passe : Exemple.59300
 
-## Test 2 : conformité du mot de passe généré 
+## Test : analyser_mdp()
+#### Résultat obtenu :
+--- MENU TÂCHES ---
+1. Générer
+2. Analyser
+3. Ajouter compte
+4. Lister comptes
+5. Rechercher
+6. Statistiques
+7. Quitter
+   
+Votre choix : 2
 
-<img width="269" height="353" alt="image" src="https://github.com/user-attachments/assets/b637c773-889b-4fd4-9bb6-ce86c775ce42" />
+90
 
-✅ Le mot de passe contient bien les caractères spéciaux, le 0 , O et 1 sont retirés, et les majuscules minuscules sont présentes.
+## Test : ajouter_compte()
+#### Résultat obtenu :
+``--- MENU TÂCHES ---
+1. Générer
+2. Analyser
+3. Ajouter compte
+4. Lister comptes
+5. Rechercher
+6. Statistiques
+7. Quitter
+   
+Votre choix : 3
 
+Entrez le nom du site : Twitch
 
+entrez le type du site (email, réseaux, banque, ...) : divertissement
+
+{'Twitch': {'type': 'divertissement', 'mot de passe': 'Exemple.59300', 'score': 90}}
+
+None
+
+## Test : lister_compte()
+#### Résultat obtenu :
+
+--- MENU TÂCHES ---
+1. Générer
+2. Analyser
+3. Ajouter compte
+4. Lister comptes
+5. Rechercher
+6. Statistiques
+7. Quitter
+
+Votre choix :
+
+Veuillez entrer un nombre valide.
+
+Votre choix : 4
+
+___________________________
+
+twitch 
+
+type :  divertissement
+
+mot de passe :  mustaphA?85214
+
+score :  90
+
+___________________________
