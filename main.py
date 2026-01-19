@@ -14,9 +14,8 @@ def menu():
               "2. Analyser\n"
               "3. Ajouter compte\n"
               "4. Lister comptes\n"
-              "5. Rechercher\n"
-              "6. Statistiques\n"
-              "7. Quitter")
+              "5. Statistiques\n"
+              "6. Quitter")
         while True:
             try:
                 choix = int(input("Votre choix : "))
@@ -35,10 +34,8 @@ def menu():
             case 4:
                 lister_compte()
             case 5:
-                rechercher_compte()
+                print(statistique())
             case 6:
-                statistiques_compte()
-            case 7:
                 break
 
 
