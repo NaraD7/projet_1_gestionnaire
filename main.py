@@ -43,7 +43,7 @@ def menu():
 
 def generer_mdp():
     '''
-    cette fonction a générer un mot de passe et va retourner le mot de passe créer
+    cette fonction a générer un mot de passe et va retourner le mot de passe créer, si le mot de passe ne convient pas à l'utilisateur il va proposer de le modifier manuellement
     :paramètres : None
     :return:
     '''
@@ -52,16 +52,41 @@ def generer_mdp():
     speciaux = ['!', '@', '#', '$', '%', '&', '*', '?', '2', '3', '4', '5', '6', '7', '8', '9']
 
     mdp = ""
-    longueur_mdp = random.randint(3,6)
-    for i in range (0, longueur_mdp):               # cette boucle va choisir une consonne, une voyelle et un caractère spécial afin de construire le mot de passe 
+    longueur = random.randint(3,11)
+    for i in range (0, longueur):               # Cette boucle va choisir une voyelle une consonne et un caractère spécial et l'ajouter au mot de passe généré
             caractere = random.choice(consonne)
             mdp += caractere
             caractere = random.choice(voyelle)
             mdp += caractere
             mdp += random.choice(speciaux)
+    print(mdp)
+    mdp = modifier_mdp(mdp)
     return mdp
 
 
+
+
+
+def modifier_mdp(mdp):
+    '''
+    cette fonction va proposer à l'utilisateur de modifier son mot de passe manuellement afin de le personnaliser
+    :param: mot de passe
+    :return: mot de passe modifié
+    '''
+    while True:
+        try :
+            changement = int(input("voulez vous changer le mot de passe ? 1 : Oui,  2 : Non   : "))
+        except ValueError:
+            print("Veuillez entrer un nombre valide.")
+            continue
+        if changement == 1:
+            mdp = input("entrez le nouveau mot de passe : ")
+            return mdp
+        elif changement == 2:
+            mdp = mdp
+            return mdp
+        elif changement != 1 and changement != 2 :
+            print("Veuillez entrer un nombre valide.")
 
 
 
@@ -72,15 +97,31 @@ def analyser_force(mdp) :
     :return:
     '''
     score = 0
-    longueur =len(mdp)
-    if longueur >= 12:
-        score += 25
-    elif 12<longueur<15:
-        score += 50
-    elif 15<longueur<18:
-        score += 75
+    speciaux = ['!', '@', '#', '$', '%', '&', '*', '?', '2', '3', '4', '5', '6', '7', '8', '9']
+    nombre, majuscule, minuscule , special = False, False, False, False
+    for i in mdp :
+        if i.isdigit() and nombre == False:
+            nombre = True
+            score += 10
+        elif i.isupper() and majuscule == False:
+            majuscule = True
+            score += 15
+        elif i.islower() and minuscule == False:
+            minuscule = True
+            score += 15
+        elif i in speciaux and special == False:
+            special = True
+            score += 20
+    if len(mdp) < 8:
+        score += 0
+    elif 8<=len(mdp)<=9:
+        score += 10
+    elif 10<=len(mdp)<=11:
+        score += 20
+    elif 12<=len(mdp)<=15:
+        score += 30
     else:
-        score += 100
+        score += 40
     return score
 
 
