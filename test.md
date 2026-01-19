@@ -1,10 +1,5 @@
 # Fiche de test du gestionnaire de mot de passe
 
-Pour les tests à effectuer il y a :
-- voir si l'entrée de lettres dans l'input de ``menu()`` nous retourne une erreur  [x]
-- voir si le mot de passe généré respecte les caractéristique demandées
-
-
 ## Test  : Menu()
 #### Résultat obtenu :
 C:\Users\Lilian\PycharmProjects\PythonProject2\.venv\Scripts\python.exe "C:\Users\Lilian\Downloads\projet_1_gestionnaire-main (1)\projet_1_gestionnaire-main\main.py" 
