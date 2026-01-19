@@ -25,8 +25,8 @@ Application Python permettant de générer des mots de passe sécurisés avec an
 
 ```bash
 # Cloner le projet
-git clone https://github.com/votre-nom/generateur-mdp.git
-cd generateur-mdp
+git clone https://github.com/NaraD7/projet_1_gestionnaire
+cd projet_1_gestionnaire
 
 # Aucune dépendance externe requise
 ```
