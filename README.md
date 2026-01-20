@@ -1,4 +1,3 @@
-📄 Template de README.md
 # Générateur de Mots de Passe Sécurisés
 
 ## 📝 Description
@@ -9,10 +8,10 @@ Application Python permettant de générer des mots de passe sécurisés avec an
 
 - ✅ Génération de mots de passe personnalisables (8-50 caractères)
 - ✅ Choix des types de caractères (majuscules, minuscules, chiffres, symboles)
-- ✅ Analyse de la force du mot de passe (Faible/Moyen/Fort/Très Fort)
-- ✅ Historique des 10 derniers mots de passe générés
+- ✅ Analyse de la force du mot de passe (Score sur 100.)
 - ✅ Sauvegarde persistante dans un fichier
 - ✅ Interface console intuitive avec menu
+- ✅ Mise à jour de mots de passe personnalisés
 
 ## 🛠️ Prérequis
 
