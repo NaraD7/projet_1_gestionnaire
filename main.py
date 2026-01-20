@@ -165,10 +165,10 @@ def sauvegarder(d):
         # Charger le contenu actuel du fichier json
         donnees = json.load(fichier)
     # 2. Ajouter le nouveau dictionnaire à la liste
-    donnees.update(d)
+        donnees.update(d)
     # 3. Réécrire le fichier avec la liste mise à jour
     with open("sauvegarde_compte.json", "w", encoding="utf-8") as fichier:
-        json.dump(donnees, fichier,indent = 2)
+        json.dump(d, fichier,indent = 2)
 
 
 def lister_compte():
