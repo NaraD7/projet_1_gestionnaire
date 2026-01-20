@@ -135,7 +135,7 @@ def analyser_force(mdp) :
         score += 30
     else:
         score += 40
-    return score
+    return int(score)
 
 def ajouter_compte(mdp, d):
     '''
@@ -149,7 +149,7 @@ def ajouter_compte(mdp, d):
     d[nom_site] = {
         "type": type_site,
         "mot de passe": mdp,
-        "score" : f"{analyser_force(mdp)}/100",
+        "score" : analyser_force(mdp),
     }
     sauvegarder(d)
 
@@ -194,11 +194,15 @@ def statistiques():
     :return:
     '''
     moyenne = 0
-    with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
-        compte = json.load(fichier)
-        for cle, valeur in compte.items():
-            # récupère la valeur du score du mot de passe et l'y ajoute à la formule de calcul de la moyenne
-            moyenne += valeur["score"]
+    sauvegarde = Path("sauvegarde_compte.json")
+    if not sauvegarde.exists() or sauvegarde.stat().st_size == 0:  # vérifie si le fichier existe ou s'il est vide dans ces cas-là le programme affiche un message d'erreur
+        print("Le fichier externe est vide ou n'existe pas.")
+    else:
+        with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
+            compte = json.load(fichier)
+            for cle, valeur in compte.items():
+                # récupère la valeur du score du mot de passe et l'y ajoute à la formule de calcul de la moyenne
+                moyenne += valeur["score"]
     moyenne = moyenne / len(compte)
     time.sleep(0.5)
     print(f"\nLa moyenne des scores des mots de passe est de {moyenne}")
