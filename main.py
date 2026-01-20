@@ -21,11 +21,11 @@ def menu():
         while True:
             try:
                 choix = int(input("Votre choix : "))
-                if choix < 1 or choix > 7:
+                if choix < 1 or choix > 6:
                     raise ValueError
                 break  # choix valide → on sort de la boucle
             except ValueError:
-                print("Veuillez entrer un nombre entre 1 et 7.")
+                print("Veuillez entrer un nombre entre 1 et 6.")
 
         match choix:
             case 1 :
@@ -51,7 +51,6 @@ def generer_mdp():
     voyelle = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'u', 'U', 'y', 'Y']
     consonne = ['b', 'B', 'c', 'C', 'd', 'D', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'v', 'V', 'w', 'W', 'x', 'X', 'z', 'Z']
     speciaux = ['!', '@', '#', '$', '%', '&', '*', '?', '2', '3', '4', '5', '6', '7', '8', '9']
-
     mdp = ""
     longueur = random.randint(3,11)
     for i in range (0, longueur):               # Cette boucle va choisir une voyelle une consonne et un caractère spécial et l'ajouter au mot de passe généré
@@ -60,7 +59,7 @@ def generer_mdp():
             caractere = random.choice(voyelle)
             mdp += caractere
             mdp += random.choice(speciaux)
-    print(f"\nMot de passe généré : {mdp}")
+    print(f"\n Mot de passe généré : {mdp}")
     return mdp
 
 
@@ -175,7 +174,7 @@ def lister_compte():
     :return:
     '''
     sauvegarde = Path("sauvegarde_compte.json")
-    if not sauvegarde.exists() or sauvegarde.stat().st_size == 0:
+    if not sauvegarde.exists() or sauvegarde.stat().st_size == 0:    # vérifie si le fichier existe ou s'il est vide dans ces cas-là le programme affiche un message d'erreur
         print("Le fichier externe est vide ou n'existe pas.")
     else:
         with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
