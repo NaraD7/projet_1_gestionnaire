@@ -1,6 +1,7 @@
 import random
 import json
 import time
+from pathlib import Path
 
 def menu():
     '''
@@ -12,13 +13,11 @@ def menu():
     while True:
         print("\n--- MENU TÂCHES ---\n"
               "1. Générer\n"
-              "2. Analyser\n"
-              "3. Ajouter compte\n"
-              "4. Lister comptes\n"
-              "5. Rechercher\n"
-              "6. Statistiques\n"
-              "7. Modifier un mot de passe\n"
-              "8. Quitter")
+              "2. Ajouter compte\n"
+              "3. Lister comptes\n"
+              "4. Statistiques\n"
+              "5. Modifier un mot de passe\n"
+              "6. Quitter")
         while True:
             try:
                 choix = int(input("Votre choix : "))
@@ -32,18 +31,14 @@ def menu():
             case 1 :
                 mdp = generer_mdp()
             case 2:
-                score = analyser_force(mdp)
+                print(ajouter_compte(mdp,d))
             case 3:
-                print(ajouter_compte(mdp,analyser_force(mdp),d))
-            case 4:
                 lister_compte()
-            case 5:
-                rechercher_compte()
-            case 6:
+            case 4:
                 statistiques()
-            case 7:
+            case 5:
                 maj_mdp(d)
-            case 8:
+            case 6:
                 break
 
 
@@ -141,10 +136,9 @@ def analyser_force(mdp) :
         score += 30
     else:
         score += 40
-    print(f"\nscore du mot de passe : {score}/100")
     return score
 
-def ajouter_compte(mdp, score, d):
+def ajouter_compte(mdp, d):
     '''
     cette fonction va demander à l'utilisateur d'entrer un nom et une catégorie afin de sauvegarder
     le mot de passe avec le site qui correspond dans le fichier externe
@@ -152,23 +146,26 @@ def ajouter_compte(mdp, score, d):
     :return:
     '''
     nom_site = str(input("Entrez le nom du site : "))
-    type_site = str(input("entrez le type du site (email, réseaux, banque, ..."))
+    type_site = str(input("entrez le type du site (email, réseaux, banque, ...) : "))
     d[nom_site] = {
         "type": type_site,
         "mot de passe": mdp,
-        "score" : analyser_force(mdp),
+        "score" : f"{analyser_force(mdp)}/100",
     }
     sauvegarder(d)
 
 def sauvegarder(d):
-    with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
-        # Charger le contenu actuel du fichier json
-        donnees = json.load(fichier)
+    sauvegarde = Path("sauvegarde_compte.json")
+    if not sauvegarde.exists() or sauvegarde.stat().st_size == 0:
+        donnees = {}
+    else:
+        with open(sauvegarde, "r", encoding="utf-8") as fichier:
+            donnees = json.load(fichier)
     # 2. Ajouter le nouveau dictionnaire à la liste
-        donnees.update(d)
+    donnees.update(d)
     # 3. Réécrire le fichier avec la liste mise à jour
     with open("sauvegarde_compte.json", "w", encoding="utf-8") as fichier:
-        json.dump(d, fichier,indent = 2)
+        json.dump(donnees, fichier,indent = 2)
 
 
 def lister_compte():
@@ -177,16 +174,19 @@ def lister_compte():
     paramètres : None
     :return:
     '''
-
-    with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
-        compte = json.load(fichier)
-        for cle, valeur in compte.items():      # cette boucle parcourt le fichier json et affiche les éléments qui y sont présents
-            time.sleep(0.5)
-            print("___________________________")
-            print(cle)
-            for cle2 in valeur:
-                print (cle2, ": ", valeur[cle2])
-    print("___________________________")
+    sauvegarde = Path("sauvegarde_compte.json")
+    if not sauvegarde.exists() or sauvegarde.stat().st_size == 0:
+        print("Le fichier externe est vide ou n'existe pas.")
+    else:
+        with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
+            compte = json.load(fichier)
+            for cle, valeur in compte.items():      # cette boucle parcourt le fichier json et affiche les éléments qui y sont présents
+                time.sleep(0.5)
+                print("___________________________")
+                print(cle)
+                for cle2 in valeur:
+                    print (cle2, ": ", valeur[cle2])
+        print("___________________________")
 
 
 def statistiques():
