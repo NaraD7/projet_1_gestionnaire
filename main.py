@@ -1,5 +1,6 @@
 import random
 import json
+import time
 
 def menu():
     '''
@@ -7,15 +8,7 @@ def menu():
     :paramètres : None
     :return:
     '''
-    d = {'utvu': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'youtube': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'twitch': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'steam': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'instagram': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'X': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'facebook': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'lol': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},
-         'riot': {'type': 'ycuyv', 'mot de passe': 'PU6Ke4cu$wy%te2je&NE9cA@tA&', 'score': 100},}
+    d = {}
     while True:
         print("\n--- MENU TÂCHES ---\n"
               "1. Générer\n"
@@ -38,20 +31,18 @@ def menu():
         match choix:
             case 1 :
                 mdp = generer_mdp()
-                print(mdp)
             case 2:
                 score = analyser_force(mdp)
-                print(f"score : {score}/100")
             case 3:
-                print(ajouter_compte(mdp,score,d))
+                print(ajouter_compte(mdp,analyser_force(mdp),d))
             case 4:
                 lister_compte()
             case 5:
                 rechercher_compte()
             case 6:
-                print(statistiques_compte())
+                statistiques()
             case 7:
-                print(maj_mdp(d))
+                maj_mdp(d)
             case 8:
                 break
 
@@ -74,8 +65,7 @@ def generer_mdp():
             caractere = random.choice(voyelle)
             mdp += caractere
             mdp += random.choice(speciaux)
-    print(f"Mot de passe généré : {mdp}")
-    mdp = modifier_mdp()
+    print(f"\nMot de passe généré : {mdp}")
     return mdp
 
 
@@ -149,6 +139,7 @@ def analyser_force(mdp) :
         score += 30
     else:
         score += 40
+    print(f"\nscore du mot de passe : {score}/100")
     return score
 
 def ajouter_compte(mdp, score, d):
@@ -163,13 +154,12 @@ def ajouter_compte(mdp, score, d):
     d[nom_site] = {
         "type": type_site,
         "mot de passe": mdp,
-        "score" : score,
+        "score" : analyser_force(mdp),
     }
     sauvegarder(d)
-    print(d)
 
 def sauvegarder(d):
-    with open("sauvegarde_compte.json", "wb", encoding="utf-8") as fichier:
+    with open("sauvegarde_compte.json", "w", encoding="utf-8") as fichier:
         json.dump(d, fichier,indent = 2)
 
 
@@ -183,6 +173,7 @@ def lister_compte():
     with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
         compte = json.load(fichier)
         for cle, valeur in compte.items():      # cette boucle parcourt le fichier json et affiche les éléments qui y sont présents
+            time.sleep(0.5)
             print("___________________________")
             print(cle)
             for cle2 in valeur:
@@ -201,8 +192,9 @@ def statistiques():
         for cle, valeur in compte.items():
             moyenne += valeur["score"]
     moyenne = moyenne / len(compte)
-    print(f"La moyenne des scores des mots de passe est de {moyenne}")
+    time.sleep(0.5)
+    print(f"\nLa moyenne des scores des mots de passe est de {moyenne}")
+    time.sleep(0.5)
     return moyenne
-
 
 print(menu())
