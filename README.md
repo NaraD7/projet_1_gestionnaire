@@ -16,7 +16,7 @@ Application Python permettant de générer des mots de passe sécurisés avec an
 ## 🛠️ Prérequis
 
 - Python 3.8 ou supérieur
-- Modules standard Python (random, string, os, json)
+- Modules Python : random, time, json, pathlib
 
 ## 🚀 Installation et utilisation
 
