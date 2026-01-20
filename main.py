@@ -99,12 +99,14 @@ def maj_mdp(dictionnaire_sauvegarde):
     '''
     lister_compte()
     modif = input("De quel site voulez vous modifier le mot de passe ?")
-    if modif not in dictionnaire_sauvegarde:                    # vérifie si le nom du site entré est présent dans le fichier de sauvegarde
-        print("Ce site n'est pas enregistré dans le gestionnaire.")
-        return maj_mdp(dictionnaire_sauvegarde)                 # relance la fonction si le site n'est pas présent
-    else:
-        dictionnaire_sauvegarde[modif]["mot de passe"] = modifier_mdp(dictionnaire_sauvegarde[modif]["mot de passe"]) # ici l'instruction est de modifier le mot de passe du site voulu en utilisant la fonction modifier_mdp()
-    sauvegarder(dictionnaire_sauvegarde)
+    with open("sauvegarde_compte.json", "r", encoding = "utf-8") as fichier:
+        dictionnaire_sauvegarde = json.load(fichier)
+        if modif not in dictionnaire_sauvegarde:                    # vérifie si le nom du site entré est présent dans le fichier de sauvegarde
+            print("Ce site n'est pas enregistré dans le gestionnaire.")
+            return maj_mdp(dictionnaire_sauvegarde)                 # relance la fonction si le site n'est pas présent
+        else:
+            dictionnaire_sauvegarde[modif]["mot de passe"] = modifier_mdp(dictionnaire_sauvegarde[modif]["mot de passe"]) # ici l'instruction est de modifier le mot de passe du site voulu en utilisant la fonction modifier_mdp()
+            sauvegarder(dictionnaire_sauvegarde)
 
 
 def analyser_force(mdp) :
@@ -159,8 +161,14 @@ def ajouter_compte(mdp, score, d):
     sauvegarder(d)
 
 def sauvegarder(d):
+    with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
+        # Charger le contenu actuel du fichier json
+        donnees = json.load(fichier)
+    # 2. Ajouter le nouveau dictionnaire à la liste
+    donnees.update(d)
+    # 3. Réécrire le fichier avec la liste mise à jour
     with open("sauvegarde_compte.json", "w", encoding="utf-8") as fichier:
-        json.dump(d, fichier,indent = 2)
+        json.dump(donnees, fichier,indent = 2)
 
 
 def lister_compte():
@@ -190,6 +198,7 @@ def statistiques():
     with open("sauvegarde_compte.json", "r", encoding="utf-8") as fichier:
         compte = json.load(fichier)
         for cle, valeur in compte.items():
+            # récupère la valeur du score du mot de passe et l'y ajoute à la formule de calcul de la moyenne
             moyenne += valeur["score"]
     moyenne = moyenne / len(compte)
     time.sleep(0.5)
