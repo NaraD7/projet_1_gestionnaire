@@ -90,4 +90,39 @@ mot de passe :  mustaphA?85214
 
 score :  90
 
+
+## Test : maj_mdp()
+#### Résultat obtenu :
+
 ___________________________
+twitch
+type :  reseau
+mot de passe :  twitch59205
+score :  70/100
+___________________________
+youtube
+type :  reseau
+mot de passe :  PI%Ha&SE@LA!NE8qA$MY*ji?HI7
+score :  100/100
+___________________________
+Twitch
+type :  reseau
+mot de passe :  NE5wo5Go*dU6GA6
+score :  90/100
+___________________________
+De quel site voulez vous modifier le mot de passe ?Twitch
+Entrez le nouveau mot de passe : projetPython1__
+
+## Test : statistiques()
+#### Résultat obtenu :
+
+--- MENU TÂCHES ---
+1. Générer
+2. Ajouter compte
+3. Lister comptes
+4. Statistiques
+5. Modifier un mot de passe
+6. Quitter
+Votre choix : 4
+
+La moyenne des scores des mots de passe est de 100.0
